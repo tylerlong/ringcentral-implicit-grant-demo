@@ -4,13 +4,18 @@
     <title>Sandbox - RingCentral Implicit Grant Type Flow Demo</title>
   </head>
   <body>
-    <h1>Sandbox - RingCentral Implicit Grant Type Flow Demo</h1>
-    <p><button>Log In</button></p>
+    <h1><a href="index.html">RingCentral Implicit Grant Type Flow Demo</a></h1>
+    <h2>Sandbox</h2>
+    <p><button onclick="startFlow()">Start RingCentral Implicit Grant Type Flow</button></p>
     <script src="https://unpkg.com/ringcentral-js-concise@0.4.5/dist/ringcentral.js"></script>
     <script>
       const rc = new RingCentral('iDL7MCToSJqc_36IUF81Hg', '', 'https://platform.devtest.ringcentral.com')
       const authorizeUri = rc.authorizeUri('http://example.com/oauth.html', { responseType: 'token' })
       console.log(authorizeUri)
+
+      function startFlow() {
+        console.log('startFlow')
+      }
     </script>
   </body>
 </html>
