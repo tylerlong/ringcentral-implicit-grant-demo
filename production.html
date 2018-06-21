@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Production - RingCentral Implicit Grant Type Flow Demo</title>
+  </head>
+  <body>
+    <h1><a href="index.html">RingCentral Implicit Grant Type Flow Demo</a></h1>
+    <h2>Production</h2>
+    <p><button onclick="startFlow()">Start RingCentral Implicit Grant Type Flow</button></p>
+    <script src="https://unpkg.com/ringcentral-js-concise@0.4.6/dist/ringcentral.js"></script>
+    <script>
+      const rc = new RingCentral('d8Qr4RbdTEa8tc-v5IlRUg', '', 'https://platform.ringcentral.com')
+      const authorizeUri = rc.authorizeUri('http://localhost:6018/oauth.html', { responseType: 'token' })
+      console.log(authorizeUri)
+
+      function startFlow() {
+        console.log('startFlow')
+        window.open(authorizeUri, 'oauthWindow', 'width=800,height=600')
+      }
+
+      window.addEventListener('message', function(event) {
+        console.log('message')
+        if(event.type === 'REDIRECT_URI') {
+          console.log(event.redirectUri)
+        }
+      })
+    </script>
+  </body>
+</html>
