@@ -2,7 +2,7 @@
 <html>
   <body>
     <script>
-      window.parent.postMessage({
+      window.opener.postMessage({
         type: 'REDIRECT_URI',
         redirectUri: window.location.href
       }, window.location.origin)

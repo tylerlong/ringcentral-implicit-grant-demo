@@ -7,21 +7,22 @@
     <h1><a href="index.html">RingCentral Implicit Grant Type Flow Demo</a></h1>
     <h2>Sandbox</h2>
     <p><button onclick="startFlow()">Start RingCentral Implicit Grant Type Flow</button></p>
+    <h3 id="token-title"></h3>
+    <pre id="token"></pre>
     <script src="https://unpkg.com/ringcentral-js-concise@0.4.6/dist/ringcentral.js"></script>
     <script>
       const rc = new RingCentral('iDL7MCToSJqc_36IUF81Hg', '', 'https://platform.devtest.ringcentral.com')
       const authorizeUri = rc.authorizeUri('https://tylerlong.github.io/ringcentral-implicit-grant-demo/oauth.html', { responseType: 'token' })
-      console.log(authorizeUri)
 
       function startFlow() {
-        console.log('startFlow')
         window.open(authorizeUri, 'oauthWindow', 'width=800,height=600')
       }
 
       window.addEventListener('message', function(event) {
-        console.log('message')
-        if(event.type === 'REDIRECT_URI') {
-          console.log(event.redirectUri)
+        if(event.data.type === 'REDIRECT_URI') {
+          console.log(event.data.redirectUri)
+          document.getElementById('token-title').innerHTML = 'Your access token is:'
+          document.getElementById('token').innerHTML = event.data.redirectUri.split('#')[1].split('&')[0].split('=')[1]
         }
       })
     </script>
