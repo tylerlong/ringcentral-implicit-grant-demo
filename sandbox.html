@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/ringcentral-js-concise@0.4.6/dist/ringcentral.js"></script>
     <script>
       const rc = new RingCentral('iDL7MCToSJqc_36IUF81Hg', '', 'https://platform.devtest.ringcentral.com')
-      const authorizeUri = rc.authorizeUri('http://localhost:6018/oauth.html', { responseType: 'token' })
+      const authorizeUri = rc.authorizeUri('https://tylerlong.github.io/ringcentral-implicit-grant-demo/oauth.html', { responseType: 'token' })
       console.log(authorizeUri)
 
       function startFlow() {
